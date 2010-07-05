@@ -1,0 +1,42 @@
+Hel-Log
+=======
+
+Simple logging. Include the swc, then `log()`. If you're using the 
+debug player then you'll see messages like:
+
+	[DEBUG] org.helvector.Test::logTest() foo bar.
+	
+Otherwise it'll be 
+
+	[DEBUG] foo bar.
+
+Conventions
+-----------
+
+ActionScript formatting follows the [Flex coding conventions][flex_conventions]. 
+
+Support
+-------
+
+ * [Issue tracker][issue_tracker]
+ * [Repository][repo]
+
+Bugs and issues should be reported via the [issue tracker][issue_tracker].
+Source can be viewed and forked via the [GitHub repository][repo].
+
+Author
+------
+
+[Simon Gregory][sg_blog]
+
+License
+-------
+
+See the accompanying LICENSE.txt file for details.
+
+[repo]: http://github.com/simongregory/hel-log/
+[issue_tracker]: http://github.com/simongregory/hel-log/issues
+[sg_blog]: http://blog.simonregory.com
+[adobe_flash]: http://www.adobe.com/products/flashplayer/
+[adobe_flash_tool]: http://www.adobe.com/products/flash/
+[flex_conventions]: http://opensource.adobe.com/wiki/display/flexsdk/Coding+Conventions
