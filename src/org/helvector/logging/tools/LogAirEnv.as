@@ -8,6 +8,7 @@ package org.helvector.logging.tools
 {
 
 import flash.desktop.NativeApplication;
+import flash.display.NativeWindow;
 import flash.system.Capabilities;
 
 /**
@@ -23,7 +24,7 @@ import flash.system.Capabilities;
  * @author Simon Gregory
  * @since  15.06.2010
  */
-public class LogAirEnv
+public class LogAirEnv extends LogEnv
 {
 
     /**
@@ -39,7 +40,7 @@ public class LogAirEnv
      *
      * Adds AIR specific capabilites.
      */
-	protected function capabilites():void
+	override protected function capabilites():void
 	{
         super.capabilites();
 
