@@ -6,8 +6,7 @@
 
 package org.helvector.logging
 {
-import org.helvector.logging.ILogger;
-import org.helvector.logging.HelLogger;
+
 import org.helvector.logging.targets.Tracer;
 import org.helvector.logging.targets.WebBrowser;
 
@@ -23,7 +22,7 @@ public class LogFactory
     public static const BASIC:String = "basic";
     public static const TRACE:String = "trace";
 
-    private static var _logger:ILogger
+    private static var _logger:ILogger;
 
     public static function manufacture(type:String=BASIC):ILogger
     {
@@ -46,6 +45,7 @@ public class LogFactory
             break;
 
             case TRACE :
+            default :
                 logger = createTracer();
             break;
         }

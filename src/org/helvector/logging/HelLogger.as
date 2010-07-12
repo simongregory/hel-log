@@ -11,7 +11,6 @@ import flash.system.Capabilities;
 
 import org.helvector.logging.util.ISubstitutor;
 import org.helvector.logging.util.MessageSubstitutor;
-import org.helvector.logging.HelLogLevel;
 
 public class HelLogger implements ILogger
 {
