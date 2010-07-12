@@ -9,7 +9,7 @@ package org.helvector.logging.tools
 
 /**
  * Contract for objects which collate runtime enviroment information and return
- * a string representation of it.
+ * a representation of it as a string.
  *
  * @langversion ActionScript 3
  * @playerversion Flash 9.0.0
