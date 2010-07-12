@@ -9,6 +9,7 @@ package helLogSuite
 
 import helLogSuite.tests.HelLogLevelTests;
 import helLogSuite.tests.LogEnvTests;
+import helLogSuite.tests.LogFactoryTests;
 import helLogSuite.tests.LoggingTests;
 import helLogSuite.tests.SubstitutionTests;
 import helLogSuite.tests.TimeStampTests;
@@ -22,6 +23,7 @@ public class LoggingTestSuite
 	public var timeStampTests:TimeStampTests;
 	public var logEnvTests:LogEnvTests;
 	public var helLogLevelTests:HelLogLevelTests;
+	public var logFactoryTests:LogFactoryTests;
 }
 
 }

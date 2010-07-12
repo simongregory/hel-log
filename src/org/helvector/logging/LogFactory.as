@@ -45,9 +45,13 @@ public class LogFactory
             break;
 
             case TRACE :
-            default :
                 logger = createTracer();
             break;
+
+            default :
+                throw new Error("Unknown manufacture type specified: "+type);
+            break;
+
         }
 
         return logger;
