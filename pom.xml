@@ -270,7 +270,7 @@
         <artifactId>flex-pmd-cpd-maven-plugin</artifactId>
         <version>${flexpmd.version}</version>
         <configuration>
-            <minimumTokenCount>1</minimumTokenCount>
+            <minimumTokenCount>25</minimumTokenCount>
         </configuration>
       </plugin>
 
