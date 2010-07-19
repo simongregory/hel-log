@@ -11,6 +11,7 @@ import flash.system.Capabilities;
 
 import org.helvector.logging.util.ISubstitutor;
 import org.helvector.logging.util.MessageSubstitutor;
+import org.helvector.logging.util.StackTraceFormatter;
 
 public class HelLogger implements ILogger
 {
@@ -101,16 +102,9 @@ public class HelLogger implements ILogger
 
 		var stack:Array = new Error().getStackTrace().split('\n');
 		var item:String = stack[_stackIndex];
+		var formatter:StackTraceFormatter = new StackTraceFormatter();
 
-		var regex:RegExp = /^\s+at\s(.+)\/(.*)\(\)/i;
-		var match:Array = regex.exec(item);
-
-		var clas:String = match[1];
-		var meth:String = match[2];
-
-		var origin:String = clas + '/' + meth + '() ';
-
-		return origin;
+		return formatter.line(item) + ' ';
 	}
 
 }
