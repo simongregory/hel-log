@@ -4,13 +4,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-package
+package log
 {
 
-public function debug(message:String, ...rest):void
+public function warn(message:String, ...rest):void
 {
 	if (logger == null) init();
-	logger.logLevel(1,message, rest);
+	logger.logLevel(3,message, rest);
 }
 
 }

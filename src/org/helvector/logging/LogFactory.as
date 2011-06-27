@@ -11,11 +11,7 @@ import org.helvector.logging.targets.Tracer;
 import org.helvector.logging.targets.WebBrowser;
 
 /**
- * Factory responsible for the creation of concreate ILogger instances. And
- * there was me thinking wood grew on trees.
- *
- * @langversion ActionScript 3
- * @playerversion Flash 9.0.0
+ * Factory responsible for the creation of concreate ILogger instances. 
  */
 public class LogFactory
 {

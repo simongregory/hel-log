@@ -17,12 +17,6 @@ import flash.system.Capabilities;
  *
  * <p>The <code>description</code> string will be generated when the class is
  * instantiated. To update it at a later time use <code>update()</code>.</p>
- *
- * @langversion ActionScript 3
- * @playerversion Flash 9.0.0
- *
- * @author Simon Gregory
- * @since  15.06.2010
  */
 public class LogEnv implements ILogEnv
 {

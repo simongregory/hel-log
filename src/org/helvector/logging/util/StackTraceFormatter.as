@@ -10,11 +10,6 @@ package org.helvector.logging.util
 public class StackTraceFormatter
 {
 
-    public function StackTraceFormatter()
-    {
-        super();
-    }
-
     private var _lineMatch:RegExp = /^\s+at\s([^\/]+)(\/)?(.*)?\(\)/i;
 
     public function line(stackLine:String):String

@@ -19,15 +19,6 @@ import org.helvector.logging.ILoggerTarget;
  */
 public class WebBrowser implements ILoggerTarget
 {
-
-	/**
-	 * @constructor
-	 */
-	public function WebBrowser()
-	{
-		super();
-	}
-
 	/**
 	 * Sends the message to the browser console.
 	 */

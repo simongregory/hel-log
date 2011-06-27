@@ -10,11 +10,6 @@ package org.helvector.logging.util
 public class MessageSubstitutor implements ISubstitutor
 {
 
-	public function MessageSubstitutor()
-	{
-		super();
-	}
-
 	/**
 	 * Cached regular expressions.
 	 */
