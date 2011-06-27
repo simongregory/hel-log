@@ -15,13 +15,13 @@ import org.helvector.logging.HelLogger;
 
 import helLogSuite.helpers.UnitTestTarget;
 
-public class LoggingTests
+public class LoggingTest
 {
 
 	private function makePrefix(method:String):String
 	{
 		if (Capabilities.isDebugger)
-			return "helLogSuite.tests::LoggingTests/" + method + "() ";
+			return "helLogSuite.tests::LoggingTest/" + method + "() ";
 
 		return "";
 	}

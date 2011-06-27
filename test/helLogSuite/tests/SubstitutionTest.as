@@ -16,7 +16,7 @@ import org.helvector.logging.util.MessageSubstitutor;
 
 import helLogSuite.helpers.UnitTestTarget;
 
-public class SubstitutionTests
+public class SubstitutionTest
 {
 	[Test]
 	public function directly():void
@@ -58,7 +58,7 @@ public class SubstitutionTests
 		var expectedBase:String = "";
 
 		if (Capabilities.isDebugger)
-			expectedBase += "helLogSuite.tests::SubstitutionTests/viaLogger() ";
+			expectedBase += "helLogSuite.tests::SubstitutionTest/viaLogger() ";
 
 		logger.log("A {0} B {1} C {2}", ["a", "b", "c"]);
 

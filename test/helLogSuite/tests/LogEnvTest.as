@@ -11,7 +11,7 @@ import org.flexunit.Assert;
 
 import org.helvector.logging.tools.LogEnv;
 
-public class LogEnvTests
+public class LogEnvTest
 {
 
 	[Test]
@@ -35,7 +35,7 @@ public class LogEnvTests
 	public function sectionTitles():void
 	{
 		var logEnv:LogEnv = new LogEnv();
-		trace("LogEnvTests::sectionTitles()", logEnv.description);
+		trace("LogEnvTest::sectionTitles()", logEnv.description);
 		var lines:Array = logEnv.description.split('\n');
 
 		Assert.assertEquals('CAPABILITIES',lines[1]);

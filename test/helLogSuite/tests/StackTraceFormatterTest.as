@@ -10,7 +10,7 @@ package helLogSuite.tests
 import org.flexunit.Assert;
 import org.helvector.logging.util.StackTraceFormatter;
 
-public class StackTraceFormatterTests
+public class StackTraceFormatterTest
 {
     [Before]
     public function setUp():void

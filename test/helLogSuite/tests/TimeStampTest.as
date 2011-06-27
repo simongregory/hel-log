@@ -11,7 +11,7 @@ import org.flexunit.Assert;
 
 import org.helvector.logging.util.TimeStamp;
 
-public class TimeStampTests
+public class TimeStampTest
 {
 	private function get zeroHour():Date
 	{

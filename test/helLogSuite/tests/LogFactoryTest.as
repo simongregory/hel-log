@@ -12,7 +12,7 @@ import org.flexunit.Assert;
 import org.helvector.logging.ILogger;
 import org.helvector.logging.LogFactory;
 
-public class LogFactoryTests
+public class LogFactoryTest
 {
 
     protected function get logFactory():LogFactory

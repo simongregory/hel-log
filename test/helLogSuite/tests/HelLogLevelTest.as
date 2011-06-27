@@ -13,7 +13,7 @@ import org.flexunit.Assert;
 
 import org.helvector.logging.HelLogLevel;
 
-public class HelLogLevelTests
+public class HelLogLevelTest
 {
 
 	[Test]
