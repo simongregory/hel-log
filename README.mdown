@@ -2,7 +2,7 @@
 
 Simple logging. Designed to work without imports and to automatically inject the origin of the log message.
 
-Using the debug flash player then you'll see:
+Output is determined by the Flash Player you are running, if it's the debug player then you get:
 
     log.debug('one');
     log.info('two');
@@ -16,7 +16,7 @@ Using the debug flash player then you'll see:
     [ERROR] org.helvector.BeanCounter::addUp() four
     [FATAL] org.helvector.BeanCounter::addUp() five
 
-Output to your flashlog.txt. Otherwise it'll be 
+Otherwise it's a shorter:
 
     log.debug('foo bar')
     
