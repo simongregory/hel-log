@@ -9,6 +9,7 @@ package org.helvector.logging
 
 import org.helvector.logging.targets.Tracer;
 import org.helvector.logging.targets.WebBrowser;
+import org.helvector.logging.ILogger;
 
 /**
  * Factory responsible for the creation of concreate ILogger instances. 

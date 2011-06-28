@@ -1,22 +1,34 @@
-Hel-Log
-=======
+# Hel-Log
 
-Simple logging. Include the swc, then `log()`. If you're using the 
-debug player then you'll see messages like:
+Simple logging. Designed to work without imports and to automatically inject the origin of the log message.
 
-	[DEBUG] org.helvector.Test::logTest() foo bar.
-	
-Otherwise it'll be 
+Using the debug flash player then you'll see:
 
-	[DEBUG] foo bar.
+    log.debug('one');
+    log.info('two');
+    log.warn('three');
+    log.error('four');
+    log.fatal('five');
+    
+    [DEBUG] org.helvector.BeanCounter::addUp() one
+    [INFO]  org.helvector.BeanCounter::addUp() two
+    [WARN]  org.helvector.BeanCounter::addUp() three
+    [ERROR] org.helvector.BeanCounter::addUp() four
+    [FATAL] org.helvector.BeanCounter::addUp() five
 
-Conventions
------------
+Output to your flashlog.txt. Otherwise it'll be 
 
-ActionScript formatting follows the [Flex coding conventions][flex_conventions]. 
+    log.debug('foo bar')
+    
+    [DEBUG] foo bar.
 
-Support
--------
+Substitution is also possible:
+
+    log.info('Cheese {0}', 'Rules');
+    
+    [INFO] org.helvector.Test::logTest() Cheese Rules.
+
+## Support
 
  * [Issue tracker][issue_tracker]
  * [Repository][repo]
@@ -24,13 +36,11 @@ Support
 Bugs and issues should be reported via the [issue tracker][issue_tracker].
 Source can be viewed and forked via the [GitHub repository][repo].
 
-Author
-------
+## Author
 
 [Simon Gregory][sg_blog]
 
-License
--------
+## License
 
 See the accompanying LICENSE.txt file for details.
 

@@ -7,10 +7,12 @@
 package
 {
 
-public function log(message:String, ...rest):void
+import org.helvector.logging.ILogger;
+
+public function get log():ILogger
 {
-	if (logger == null) init();
-	logger.log(message, rest);
+	if (lgr == null) init();
+	return lgr;
 }
 
 }
@@ -18,9 +20,9 @@ public function log(message:String, ...rest):void
 import org.helvector.logging.LogFactory;
 import org.helvector.logging.ILogger;
 
-var logger:ILogger;
+var lgr:ILogger;
 
 function init():void
 {
-	logger = LogFactory.manufacture();
+	lgr = LogFactory.manufacture();
 }

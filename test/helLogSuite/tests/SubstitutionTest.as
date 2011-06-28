@@ -60,15 +60,15 @@ public class SubstitutionTest
 		if (Capabilities.isDebugger)
 			expectedBase += "helLogSuite.tests::SubstitutionTest/viaLogger() ";
 
-		logger.log("A {0} B {1} C {2}", ["a", "b", "c"]);
+		logger.log("A {0} B {1} C {2}", "a", "b", "c");
 
 		Assert.assertEquals(expectedBase+"A a B b C c",target.message);
 
-		logger.log("A {0} B {1} C {2}", ["a", "b", "c", "d", "e", "f"]);
+		logger.log("A {0} B {1} C {2}", "a", "b", "c", "d", "e", "f");
 
 		Assert.assertEquals(expectedBase+"A a B b C c",target.message);
 
-		logger.log("A {0} B {1} C {2}", ["1", "2", "3"]);
+		logger.log("A {0} B {1} C {2}", "1", "2", "3");
 
 		Assert.assertEquals(expectedBase+"A 1 B 2 C 3",target.message);
 
@@ -76,7 +76,7 @@ public class SubstitutionTest
 
 		Assert.assertEquals(expectedBase+"A{ 0 }B{ 1 }C{ 2 }",target.message);
 
-		logger.log("A{ 0 }B {1} C{ 2 }", ["z", "Z", "x", "X"]);
+		logger.log("A{ 0 }B {1} C{ 2 }", "z", "Z", "x", "X");
 
 		Assert.assertEquals(expectedBase+"A{ 0 }B Z C{ 2 }",target.message);
 

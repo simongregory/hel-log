@@ -12,6 +12,7 @@ import flash.system.Capabilities;
 import org.helvector.logging.util.ISubstitutor;
 import org.helvector.logging.util.MessageSubstitutor;
 import org.helvector.logging.util.StackTraceFormatter;
+import org.helvector.logging.HelLogLevel;
 
 public class HelLogger implements ILogger
 {
@@ -58,17 +59,42 @@ public class HelLogger implements ILogger
 	 * Log the requested message, substituting any string place holders, to all
 	 * the current logging targets.
 	 */
-	public function log(message:String, rest:Array=null):void
+	public function log(message:String, ...rest):void
 	{
 		if (rest == null) rest = [];
 		write('',message,rest);
 	}
+    
+    public function debug(message:String, ...rest):void
+	{
+		logLevel(HelLogLevel.DEBUG,message,rest);
+	}
 
+    public function info(message:String, ...rest):void
+	{
+		logLevel(HelLogLevel.INFO,message,rest);
+	}
+
+    public function warn(message:String, ...rest):void
+	{
+		logLevel(HelLogLevel.WARN,message,rest);
+	}
+
+    public function error(message:String, ...rest):void
+	{
+		logLevel(HelLogLevel.ERROR,message,rest);
+	}
+
+    public function fatal(message:String, ...rest):void
+	{
+		logLevel(HelLogLevel.FATAL,message,rest);
+	}
+    
     /**
      * Log the requested message at the level specified, substituting any string
      * placeholders, to all the current logging targets.
      */
-	public function logLevel(level:uint, message:String, rest:Array=null):void
+	public function logLevel(level:uint, message:String, ...rest):void
 	{
 	   	if (rest == null) rest = [];
 

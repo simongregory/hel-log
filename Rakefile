@@ -7,6 +7,7 @@ require 'flashsdk'
 require 'flexunit'
 
 USE_FCSH = true
+VERSION = '0.0.1'
 
 ##############################
 # Test
@@ -30,9 +31,8 @@ flashplayer :test => "bin/HelLogRunner.swf"
 ##############################
 # SWC
 
-compc "bin/hel-log.swc" do |t|
+compc "bin/hel-log-#{VERSION}.swc" do |t|
   t.include_sources << 'src'
-  t.include_sources << 'src/log'
   t.include_sources << 'src/org/helvector/logging'
   t.include_sources << 'src/org/helvector/logging/messages'
   t.include_sources << 'src/org/helvector/logging/targets'
@@ -41,7 +41,7 @@ compc "bin/hel-log.swc" do |t|
 end
 
 desc "Compile the SWC file"
-task :swc => 'bin/hel-log.swc'
+task :swc => "bin/hel-log-#{VERSION}.swc"
 
 ##############################
 # DOC
