@@ -6,8 +6,8 @@ require 'rake/clean'
 require 'flashsdk'
 require 'flexunit'
 
-USE_FCSH = true
-VERSION = '0.0.1'
+USE_FCSH = 'true'
+VERSION = '0.0.3'
 
 ##############################
 # Test
@@ -16,9 +16,10 @@ library :flexunit, :flexunit_as3
 library :flexunit, :flexunit_uilistener
 
 # Compile the test swf
-mxmlc "bin/HelLogRunner.swf" do |t|
+amxmlc "bin/HelLogRunner.swf" do |t|
   t.input = "test/HelLogRunner.as"
-  t.library_path << "lib/flexunit/"
+  t.library_path << "lib/flexunit"
+  t.library_path << "lib/hamcrest"
   t.source_path << 'test'
   t.source_path << 'src'
   t.default_size = "100,100"
@@ -31,7 +32,7 @@ flashplayer :test => "bin/HelLogRunner.swf"
 ##############################
 # SWC
 
-compc "bin/hel-log-#{VERSION}.swc" do |t|
+acompc "bin/hel-log-#{VERSION}.swc" do |t|
   t.include_sources << 'src'
   t.include_sources << 'src/org/helvector/logging'
   t.include_sources << 'src/org/helvector/logging/messages'

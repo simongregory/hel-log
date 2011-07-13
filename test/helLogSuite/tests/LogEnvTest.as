@@ -28,7 +28,7 @@ public class LogEnvTest
 		var logEnv:LogEnv = new LogEnv();
 		var lines:Array = logEnv.description.split('\n');
 
-		Assert.assertEquals(22,lines.length);
+		Assert.assertEquals(23,lines.length);
 	}
 
 	[Test]
@@ -39,7 +39,7 @@ public class LogEnvTest
 		var lines:Array = logEnv.description.split('\n');
 
 		Assert.assertEquals('CAPABILITIES',lines[1]);
-		Assert.assertEquals('SYSTEM',lines[18]);
+		Assert.assertEquals('SYSTEM',lines[19]);
 	}
 
 	[Test]

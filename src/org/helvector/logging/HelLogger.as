@@ -9,10 +9,13 @@ package org.helvector.logging
 
 import flash.system.Capabilities;
 
+import org.helvector.logging.HelLogLevel;
+import org.helvector.logging.tools.ILogEnv;
+import org.helvector.logging.tools.LogAirEnv;
 import org.helvector.logging.util.ISubstitutor;
 import org.helvector.logging.util.MessageSubstitutor;
 import org.helvector.logging.util.StackTraceFormatter;
-import org.helvector.logging.HelLogLevel;
+import org.helvector.logging.util.TimeStamp;
 
 public class HelLogger implements ILogger
 {
@@ -48,6 +51,15 @@ public class HelLogger implements ILogger
 	}
 
 	/**
+	 * Write env info to all log targets.
+	 */
+	public function env():void
+	{
+	    var env:ILogEnv = new LogAirEnv();
+        info(env.description);
+	}
+
+	/**
 	 * Removes all logging targets.
 	 */
 	public function clear():void
@@ -64,7 +76,7 @@ public class HelLogger implements ILogger
 		if (rest == null) rest = [];
 		write('',message,rest);
 	}
-    
+
     public function debug(message:String, ...rest):void
 	{
 		logLevel(HelLogLevel.DEBUG,message,rest);
@@ -89,27 +101,29 @@ public class HelLogger implements ILogger
 	{
 		logLevel(HelLogLevel.FATAL,message,rest);
 	}
-    
+
     /**
      * Log the requested message at the level specified, substituting any string
      * placeholders, to all the current logging targets.
      */
-	public function logLevel(level:uint, message:String, ...rest):void
+	private function logLevel(level:uint, message:String, values:Array):void
 	{
-	   	if (rest == null) rest = [];
+	   	//if (rest == null) rest = [];
 
 		write(_logLevel.describe(level),
 		      message,
-		      rest);
+		      values);
 	}
+
+    private var time:TimeStamp = new TimeStamp;
 
 	/**
 	 * Write the log message to all targets.
 	 */
-	protected function write(level:String, message:String, rest:Array):void
+	protected function write(level:String, message:String, values:Array):void
 	{
-		var msg:String = level + reflect();
-		msg += _substitutor.run(message,rest);
+		var msg:String = '[' + time.stamp() + '] ' + level + reflect();
+		msg += _substitutor.run(message,values);
 
 		for each (var target:ILoggerTarget in _targets) target.write(msg);
 	}

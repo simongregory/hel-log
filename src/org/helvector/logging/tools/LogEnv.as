@@ -25,9 +25,10 @@ public class LogEnv implements ILogEnv
 	{
 		super();
 		gather();
+        write();
 	}
 
-	protected var _description:String;
+	protected var _description:String = '';
 
 	public function get description():String
 	{
@@ -39,6 +40,7 @@ public class LogEnv implements ILogEnv
 	public function update():String
 	{
 		gather();
+        write();
 		return _description;
 	}
 
@@ -48,7 +50,6 @@ public class LogEnv implements ILogEnv
 
 		capabilites();
 		system();
-		write();
 	}
 
 	protected function capabilites():void
@@ -62,6 +63,7 @@ public class LogEnv implements ILogEnv
 		add("Has Accessibility aids", 		 Capabilities.hasAccessibility);
 		add("Has Audio Encoder", 			 Capabilities.hasAudioEncoder);
 		add("Has Video Encoder", 			 Capabilities.hasVideoEncoder);
+        add("Max H.264 Level IDC supported", Capabilities.maxLevelIDC );
 		add("Has MP3 Decoder",	 			 Capabilities.hasMP3);
 		add("Has Streaming audio",			 Capabilities.hasStreamingAudio);
 		add("Has Streaming video",			 Capabilities.hasStreamingVideo);

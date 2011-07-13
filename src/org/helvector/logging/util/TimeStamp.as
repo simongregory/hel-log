@@ -13,19 +13,11 @@ package org.helvector.logging.util
  * <p>For readability strings are output to a consistent length. Date only, time
  * only, or date and time can be specified to output. Dates are formatted using 
  * British convention of Day/Month/Year.</p>
- * 
- * @langversion ActionScript 3
- * @playerversion Flash 9.0.0
- * 
- * @author Simon Gregory
- * @since  15.06.2010
  */
 public class TimeStamp
 {
 	
 	/**
-	 * @constructor
-	 * 
 	 * @param dated Flag to set output to include the date.
 	 * @param timed Flag to set output to include the time.
 	 */

@@ -9,7 +9,9 @@ package helLogSuite.tests
 
 import flash.system.Capabilities;
 
-import org.flexunit.Assert;
+import org.hamcrest.assertThat;
+import org.hamcrest.text.containsString;
+import org.hamcrest.text.endsWith;
 
 import org.helvector.logging.HelLogger;
 
@@ -38,16 +40,15 @@ public class LoggingTest
 
 		logger.log("");
 
-		Assert.assertEquals(prefix,target.message);
+		assertThat(target.message, containsString(prefix));
 
 		logger.log("Alpha");
 
-		Assert.assertEquals(prefix+"Alpha", target.message);
+		assertThat(target.message, containsString(prefix+"Alpha"));
 
-		logger.log("Beta");
+        logger.log("Beta");
 
-		Assert.assertEquals(prefix+"Beta", target.message);
-
+        assertThat(target.message, containsString(prefix+"Beta"));
 	}
 
 	[Test]
@@ -61,14 +62,13 @@ public class LoggingTest
 
 		var expected:String = makePrefix("removeTarget") + "Alpha";
 
-		Assert.assertEquals(expected,target.message);
+		assertThat(target.message, containsString(expected));
 
 		logger.remove(target);
 
 		logger.log("Beta");
 
-		Assert.assertEquals(expected,target.message);
-
+        assertThat(target.message, containsString(expected));
 	}
 
 	[Test]
@@ -88,18 +88,74 @@ public class LoggingTest
 
 		var expected:String = makePrefix("clearTargets") + "A";
 
-		Assert.assertEquals(expected,targetA.message);
-		Assert.assertEquals(expected,targetB.message);
-		Assert.assertEquals(expected,targetC.message);
+        assertThat(targetA.message, containsString(expected));
+        assertThat(targetB.message, containsString(expected));
+        assertThat(targetC.message, containsString(expected));
 
 		logger.clear();
 
 		logger.log('Clear');
 
-		Assert.assertEquals(expected,targetA.message);
-		Assert.assertEquals(expected,targetB.message);
-		Assert.assertEquals(expected,targetC.message);
+		assertThat(targetA.message, containsString(expected));
+        assertThat(targetB.message, containsString(expected));
+        assertThat(targetC.message, containsString(expected));
+	}
 
+	[Test]
+	public function shouldSubstitue():void
+	{
+		var target:UnitTestTarget = new UnitTestTarget();
+		var logger:HelLogger = new HelLogger(4);
+
+		logger.add(target);
+
+		logger.log("A {0} B {1} C {2}", "a", "b", "c");
+
+		assertThat(target.message, endsWith("A a B b C c"));
+
+		logger.log("A {0} B {1} C {2}", "a", "b", "c", "d", "e", "f");
+
+		assertThat(target.message, endsWith("A a B b C c"));
+
+		logger.log("A {0} B {1} C {2}", "1", "2", "3");
+
+		assertThat(target.message, endsWith("A 1 B 2 C 3"));
+
+		logger.log("A{ 0 }B{ 1 }C{ 2 }");
+
+		assertThat(target.message, endsWith("A{ 0 }B{ 1 }C{ 2 }"));
+
+		logger.log("A{ 0 }B {1} C{ 2 }", "z", "Z", "x", "X");
+
+		assertThat(target.message, endsWith("A{ 0 }B Z C{ 2 }"));
+	}
+
+	[Test]
+	public function shouldLogInfo():void
+	{
+	    var target:UnitTestTarget = new UnitTestTarget();
+		var logger:HelLogger = new HelLogger(4);
+
+		logger.add(target);
+
+		logger.info("A {0} B {1}", "1", "2");
+
+		assertThat(target.message, endsWith("A 1 B 2"));
+		assertThat(target.message, containsString("[INFO]"));
+	}
+
+	[Test]
+	public function shouldLogDebug():void
+	{
+	    var target:UnitTestTarget = new UnitTestTarget();
+		var logger:HelLogger = new HelLogger(4);
+
+		logger.add(target);
+
+		logger.debug("A {0} B {1}", "1", "2");
+
+		assertThat(target.message, endsWith("A 1 B 2"));
+		assertThat(target.message, containsString("[DEBUG]"));
 	}
 }
 
