@@ -45,7 +45,7 @@ desc "Compile the SWC file"
 task :swc => "bin/hel-log-#{VERSION}.swc"
 
 ##############################
-# DOC
+# ASDoc
 
 desc "Generate documentation at doc/"
 asdoc 'doc' do |t|
@@ -53,5 +53,53 @@ asdoc 'doc' do |t|
 end
 
 ##############################
-# DEFAULT
+# Copyright Headers
+
+desc "Updates all source and test file copyright headers"
+task :headers do
+  header = <<EOS
+//AS3///////////////////////////////////////////////////////////////////////////
+//
+// Copyright 2010 the original author or authors.
+//
+////////////////////////////////////////////////////////////////////////////////
+
+EOS
+  Dir[ '{src,test}/**/*.as' ].each do |uri|
+    src = IO.read( uri )
+    File.open( uri, 'w+' ) do |f|
+      f << src.sub( /.+?(?=package)/m, header )
+    end
+  end
+end
+
+##############################
+# Packaging tasks
+
+task :release do
+  puts ""
+  print "Are you sure you want to relase hel-log #{VERSION}? [y/N] "
+  exit unless STDIN.gets.index(/y/i) == 0
+  
+  unless `git branch` =~ /^\* master$/
+    puts "You must be on the master branch to release!"
+    exit!
+  end
+  
+  # Build gem and upload
+  # sh "gem build hellog.gemspec"
+  # sh "gem push hellog-#{HelLog::VERSION}.gem"
+  # sh "rm hellog-#{HelLog::VERSION}.gem"
+  
+  # Commit
+  sh "git commit --allow-empty -a -m 'v#{VERSION}'"
+  sh "git tag v#{VERSION}"
+  sh "git push origin master"
+  sh "git push origin v#{VERSION}"
+end
+
+
+##############################
+# Default
+
 task :default => :test
