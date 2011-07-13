@@ -12,7 +12,7 @@ import org.helvector.logging.targets.WebBrowser;
 import org.helvector.logging.ILogger;
 
 /**
- * Factory responsible for the creation of concreate ILogger instances. 
+ * Factory responsible for the creation of concreate ILogger instances.
  */
 public class LogFactory
 {
