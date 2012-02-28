@@ -26,11 +26,11 @@ public class HelLogLevel
 {
 
     public static const ALL:uint   = 0;
-	public static const DEBUG:uint = 1;
-	public static const INFO:uint  = 2;
-	public static const WARN:uint  = 3;
-	public static const ERROR:uint = 4;
-	public static const FATAL:uint = 5;
+    public static const DEBUG:uint = 1;
+    public static const INFO:uint  = 2;
+    public static const WARN:uint  = 3;
+    public static const ERROR:uint = 4;
+    public static const FATAL:uint = 5;
 
     public function HelLogLevel()
     {
@@ -45,6 +45,32 @@ public class HelLogLevel
         if (level < 0 ) level = 0;
         if (level > 5 ) level = 5;
         return _levels[level];
+    }
+
+    public function lookup(description:String):uint
+    {
+        var result:uint = 0;
+
+        switch (description.toUpperCase())
+        {
+        case "DEBUG":
+            result = 1;
+            break;
+        case "INFO":
+            result = 2;
+            break;
+        case "WARN":
+            result = 3;
+            break;
+        case "ERROR":
+            result = 4;
+            break;
+        case "FATAL":
+            result = 5;
+            break;
+        }
+
+        return result;
     }
 
     protected function init():void

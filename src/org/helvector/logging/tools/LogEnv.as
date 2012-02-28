@@ -6,6 +6,8 @@
 
 package org.helvector.logging.tools
 {
+	
+import org.helvector.logging.ILogger;
 
 import flash.system.System;
 import flash.system.Capabilities;
@@ -20,12 +22,20 @@ import flash.system.Capabilities;
  */
 public class LogEnv implements ILogEnv
 {
+	private var _logger:ILogger;
 
-	public function LogEnv()
+	public function LogEnv(logger:ILogger)
 	{
+		_logger = logger;
+		
 		super();
 		gather();
         write();
+	}
+	
+	public function get logger():ILogger
+	{
+		return _logger
 	}
 
 	protected var _description:String = '';

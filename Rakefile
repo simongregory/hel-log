@@ -7,7 +7,7 @@ require 'flashsdk'
 require 'flexunit'
 
 USE_FCSH = 'true'
-VERSION = '0.0.3'
+VERSION = '0.0.4'
 
 ##############################
 # Test

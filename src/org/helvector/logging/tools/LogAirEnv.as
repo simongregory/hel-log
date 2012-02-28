@@ -7,6 +7,7 @@
 package org.helvector.logging.tools
 {
 
+import org.helvector.logging.ILogger;
 import org.helvector.logging.tools.LogEnv;
 
 import flash.desktop.NativeApplication;
@@ -14,13 +15,18 @@ import flash.display.Screen;
 
 public class LogAirEnv extends LogEnv
 {
-    
+	public function LogAirEnv(logger:ILogger)
+	{
+		super(logger);
+	}
+	
     override protected function gather():void
     {
         super.gather();
 
         runtime();
         screens();
+        logging();
     }
 
     override protected function system():void
@@ -66,6 +72,13 @@ public class LogAirEnv extends LogEnv
             add(" Visible Bounds", "l:"+screen.visibleBounds.left.toString()+" r:"+screen.visibleBounds.right.toString()+" t:"+screen.visibleBounds.top.toString()+" b:"+screen.visibleBounds.bottom.toString());
             add(" Bounds", "l:"+screen.bounds.left.toString()+" r:"+screen.bounds.right.toString()+" t:"+screen.bounds.top.toString()+" b:"+screen.bounds.bottom.toString());
         }
+    }
+
+    protected function logging():void
+    {
+        add("LOGGING");
+
+        add("Level", logger.filter);
     }
 
 }

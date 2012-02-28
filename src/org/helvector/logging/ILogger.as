@@ -12,6 +12,9 @@ package org.helvector.logging
  */
 public interface ILogger
 {
+	function set filter(value:String):void;
+	function get filter():String;
+	
 	function log(message:String, ...rest):void;
 
 	//function logLevel(level:uint, message:String, ...rest):void;

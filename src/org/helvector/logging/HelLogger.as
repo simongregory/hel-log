@@ -32,7 +32,21 @@ public class HelLogger implements ILogger
 	private var _stackIndex:int;
 	private var _substitutor:ISubstitutor;
 	private var _logLevel:HelLogLevel;
+	private var _filterLevel:uint = 0;
 
+	/**
+	 * Set log level filter to control amount of output.
+	 */
+	public function set filter(value:String):void
+	{
+		_filterLevel = _logLevel.lookup(value);
+	}
+	
+	public function get filter():String
+	{
+		return _logLevel.describe(_filterLevel);
+	}
+	
 	/**
 	 * Add a log target. A place to which to send log messages - file, server.
 	 */
@@ -55,7 +69,7 @@ public class HelLogger implements ILogger
 	 */
 	public function env():void
 	{
-	    var env:ILogEnv = new LogAirEnv();
+	    var env:ILogEnv = new LogAirEnv(this);
         info(env.description);
 	}
 
@@ -110,9 +124,8 @@ public class HelLogger implements ILogger
 	{
 	   	//if (rest == null) rest = [];
 
-		write(_logLevel.describe(level),
-		      message,
-		      values);
+		if (level >= _filterLevel)
+			write(_logLevel.describe(level), message, values);
 	}
 
     private var time:TimeStamp = new TimeStamp;
