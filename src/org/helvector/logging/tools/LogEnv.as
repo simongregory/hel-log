@@ -24,7 +24,7 @@ public class LogEnv implements ILogEnv
 {
 	private var _logger:ILogger;
 
-	public function LogEnv(logger:ILogger)
+	public function LogEnv(logger:ILogger=null)
 	{
 		_logger = logger;
 		

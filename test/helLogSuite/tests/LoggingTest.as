@@ -12,8 +12,10 @@ import flash.system.Capabilities;
 import org.hamcrest.assertThat;
 import org.hamcrest.text.containsString;
 import org.hamcrest.text.endsWith;
+import org.hamcrest.core.not;
 
 import org.helvector.logging.HelLogger;
+import org.helvector.logging.ILogger;
 
 import helLogSuite.helpers.UnitTestTarget;
 
@@ -156,6 +158,24 @@ public class LoggingTest
 
 		assertThat(target.message, endsWith("A 1 B 2"));
 		assertThat(target.message, containsString("[DEBUG]"));
+	}
+
+	[Test]
+	public function shouldFilterMessages():void
+	{
+	    var target:UnitTestTarget = new UnitTestTarget();
+		var logger:ILogger = new HelLogger(4);
+		
+		logger.add(target);
+		logger.filter = "INFO";
+		
+		logger.debug("debug message");
+		logger.info("info message");
+		logger.warn("warn message");
+		
+		assertThat(target.message, not(containsString("[DEBUG]")));
+		assertThat(target.message, not(containsString("[INFO]")));
+		assertThat(target.message, containsString("[WARN]"));
 	}
 }
 

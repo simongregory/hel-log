@@ -15,7 +15,7 @@ import flash.display.Screen;
 
 public class LogAirEnv extends LogEnv
 {
-	public function LogAirEnv(logger:ILogger)
+	public function LogAirEnv(logger:ILogger=null)
 	{
 		super(logger);
 	}
@@ -26,7 +26,7 @@ public class LogAirEnv extends LogEnv
 
         runtime();
         screens();
-        logging();
+        if (logger) logging();
     }
 
     override protected function system():void
