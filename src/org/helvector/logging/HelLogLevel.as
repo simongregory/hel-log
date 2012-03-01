@@ -51,6 +51,8 @@ public class HelLogLevel
     {
         var result:uint = 0;
 
+		if (description == null) return result;
+
         switch (description.toUpperCase())
         {
         case "DEBUG":
