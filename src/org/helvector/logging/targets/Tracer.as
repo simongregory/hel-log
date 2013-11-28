@@ -6,7 +6,6 @@
 
 package org.helvector.logging.targets
 {
-
 import org.helvector.logging.ILoggerTarget;
 
 /**

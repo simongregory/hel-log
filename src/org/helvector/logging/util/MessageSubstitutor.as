@@ -32,7 +32,7 @@ public class MessageSubstitutor implements ISubstitutor
 	}
 
 	/**
-	 * Generates and caches a placehoder regular expression for the supplied
+	 * Generates and caches a placeholder regular expression for the supplied
 	 * index value.
 	 */
 	protected function getMatch(index:uint):RegExp

@@ -6,10 +6,8 @@
 
 package org.helvector.logging
 {
-
 import flash.system.Capabilities;
 
-import org.helvector.logging.HelLogLevel;
 import org.helvector.logging.tools.ILogEnv;
 import org.helvector.logging.tools.LogAirEnv;
 import org.helvector.logging.util.ISubstitutor;

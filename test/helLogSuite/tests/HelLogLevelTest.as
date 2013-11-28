@@ -6,7 +6,6 @@
 
 package helLogSuite.tests
 {
-
 import flash.system.Capabilities;
 
 import org.flexunit.Assert;

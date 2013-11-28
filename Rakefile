@@ -1,13 +1,14 @@
 require 'rubygems'
 require 'bundler'
 require 'bundler/setup'
+require 'open4'
 
 require 'rake/clean'
 require 'flashsdk'
 require 'flexunit'
 
 USE_FCSH = 'true'
-VERSION = '0.0.5'
+VERSION = '0.0.6'
 
 ##############################
 # Test

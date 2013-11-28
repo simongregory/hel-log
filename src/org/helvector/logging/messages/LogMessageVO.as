@@ -36,14 +36,6 @@ public class LogMessageVO
 	 */
 	public var filter:String;
 
-    /**
-     * @constructor
-     */
-	public function LogMessageVO()
-	{
-	    super();
-	}
-
 }
 
 }

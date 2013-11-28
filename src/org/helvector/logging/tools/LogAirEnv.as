@@ -9,7 +9,6 @@ package org.helvector.logging.tools
 import flash.filesystem.File;
 
 import org.helvector.logging.ILogger;
-import org.helvector.logging.tools.LogEnv;
 
 import flash.desktop.NativeApplication;
 import flash.display.Screen;
@@ -58,7 +57,15 @@ public class LogAirEnv extends LogEnv
         addDirectory('Application directory',         File.applicationDirectory);
         addDirectory('Application storage directory', File.applicationStorageDirectory);
         addDirectory("User directory",                File.userDirectory);
+        addDirectory("Desktop directory",             File.desktopDirectory);
         addDirectory("Documents directory",           File.documentsDirectory);
+        addDirectory("Cache directory",               File.cacheDirectory);
+
+        const roots:Array = File.getRootDirectories();
+        for each (var file:File in roots)
+        {
+            addDirectory("Root directory", file);
+        }
     }
 
     private function addDirectory(description:String, folder:File):void
@@ -68,12 +75,28 @@ public class LogAirEnv extends LogEnv
             const path:String = folder.nativePath;
             const size:Number = folder.spaceAvailable;
 
-            add(description, path + "(" + size + " bytes avaialbe)" );
+            add(description, path + " (" + describeBytes(size) +" free)" );
         }
         catch (e:Error)
         {
             add(description, "Unknown");
         }
+    }
+
+    private function describeBytes(bytes:Number):String
+    {
+        var description:String = 'Folder size unknown';
+
+        if (!isNaN(bytes))
+        {
+            const levels:Array = ['bytes', 'KB', 'MB', 'GB', 'TB', 'PB'];
+            const index:uint = Math.floor(Math.log(bytes)/Math.log(1024));
+            const value:String = (index < 2) ? Math.round(bytes/Math.pow(1024, index)).toString() : (bytes / Math.pow(1024, index)).toFixed(2);
+
+            description = value + ' ' + levels[index];
+        }
+
+        return description;
     }
 
     public function runtime():void

@@ -8,7 +8,7 @@ package org.helvector.logging.tools
 {
 
 /**
- * Contract for objects which collate runtime enviroment information and return
+ * Contract for objects which collate runtime environment information and return
  * a representation of it as a string.
  *
  * @langversion ActionScript 3
