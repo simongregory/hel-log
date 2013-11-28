@@ -2,3 +2,5 @@ target
 bin
 lib
 Gemfile.lock
+.idea
+*.iml
